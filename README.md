@@ -3,8 +3,7 @@
 Salva as tarefas no LocalStorage. Feito com HTML, SCSS e JavaScript :D
 
 ### Github Pages
-
--- link here
+https://u-dani.github.io/to-do-list/
 
 ### Links
 

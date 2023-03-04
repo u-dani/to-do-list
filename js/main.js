@@ -108,6 +108,8 @@ function editTask({ target }) {
   const taskInput = target.parentNode.querySelector(`.${classTaskInput}`);
   taskInput.removeAttribute("readonly");
   taskInput.focus();
+
+  taskInput.parentNode.classList.remove("c-task--done");
   taskInput.parentNode.querySelector(`.${classBtnEdit}`).style.color = "blue";
 }
 

@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+input {
+  outline: none;
+}
+
+.l-page {
+  padding: 80px 0px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+  width: 90%;
+  max-width: 500px;
+}
+
+.l-task-form-input {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border: 1px solid #333;
+}
+
+.l-task-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.c-title {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.c-subtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  background-color: #b42a2a;
+  padding: 0.5rem 0.8rem;
+  color: white;
+}
+
+.c-input {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border: none;
+  flex: 1;
+  text-align: center;
+}
+
+.c-task {
+  display: flex;
+  align-items: center;
+  border: 1px solid #333;
+}
+.c-task__input {
+  text-align: start;
+  color: black;
+}
+.c-task__input:read-only {
+  color: #333;
+}
+.c-task--template {
+  display: none;
+}
+.c-task--done {
+  background-color: lightgray;
+  border: 1px solid lightgray;
+  opacity: 0.8;
+}
+.c-task--done input {
+  background-color: lightgray;
+  text-decoration: line-through;
+}
+.c-task--done .c-icon--done {
+  color: green;
+}
+
+.c-icon {
+  background-color: transparent;
+  padding: 3px;
+  cursor: pointer;
+}
+.c-icon--add:hover {
+  color: rgb(173, 30, 54);
+}
+.c-icon--done:hover {
+  color: limegreen;
+}
+.c-icon--edit:hover {
+  color: rgb(79, 107, 230);
+}
+.c-icon--del:hover {
+  color: red;
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/main.css" />
+    <script defer type="module" src="js/main.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 1,
+          'wght' 700,
+          'GRAD' 200,
+          'opsz' 48
+        }
+    </style>
+</head>
+<body>
+
+    <div class="l-page">
+        <h1 class="c-title">To Do List</h1>
+
+        <form class="l-task-form-input js-task-form">
+            <input type="text" placeholder="Nova tarefa" class="c-input js-task-form-input" maxlength="30"/>
+            <span class="material-symbols-outlined c-icon c-icon--add">add</span>
+        </form>
+    
+        <main class="l-task-container js-task-container">
+            <h2 class="c-subtitle">Suas tarefas</h2>
+            <div class="c-task c-task--template">
+                <input type="text" class="c-input c-task__input js-task-input" readonly maxlength="30"/>
+                <span class="material-symbols-outlined c-icon c-icon--done">done</span>
+                <span class="material-symbols-outlined c-icon c-icon--edit">edit</span>
+                <span class="material-symbols-outlined c-icon c-icon--del">delete</span>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

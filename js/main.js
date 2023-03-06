@@ -3,15 +3,19 @@
 const classTaskForm = "js-task-form";
 const classTaskInputForm = "js-task-form-input";
 const classTaskContainer = "js-task-container";
-
-const classTask = "js-task";
 const classTaskTemplate = "c-task--template";
 const classTaskInput = "js-task-input";
+const classTask = "js-task";
 
 const classBtnAdd = "c-icon--add";
 const classBtnDone = "c-icon--done";
 const classBtnEdit = "c-icon--edit";
 const classBtnDel = "c-icon--del";
+const classBtnSearch = "c-icon--search";
+
+const classSearchForm = "js-search-form";
+const classSearchInput = "js-seach-input";
+const classSelectFilter = "js-select-filter";
 
 //
 
@@ -20,19 +24,72 @@ const taskContainer = document.querySelector(`.${classTaskContainer}`);
 const taskTemplate = document.querySelector(`.${classTaskTemplate}`);
 const taskInputForm = document.querySelector(`.${classTaskInputForm}`);
 
+const searchForm = document.querySelector(`.${classSearchForm}`);
+const searchInput = document.querySelector(`.${classSearchInput}`);
+const selectFilter = document.querySelector(`.${classSelectFilter}`);
+
 const btnAdd = document.querySelector(`.${classBtnAdd}`);
+const btnSearch = document.querySelector(`.${classBtnSearch}`);
 
 //
 
 taskForm.addEventListener("submit", (e) => {
   e.preventDefault();
   addNewTask();
-  taskInputForm.value = "";
 });
 
 btnAdd.addEventListener("click", addNewTask);
 
+searchForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
+
+searchInput.addEventListener("input", () => {
+  filterTask();
+});
+
+btnSearch.addEventListener("click", filterTask);
+
+selectFilter.addEventListener("change", filterTask);
+
 //
+
+function filterTask() {
+  const taskList = taskContainer.querySelectorAll(`.${classTask}`);
+
+  taskList.forEach((task) => {
+    task.classList.add("is-hide");
+
+    const inputValue = task
+      .querySelector(`.${classTaskInput}`)
+      .value.toLowerCase();
+
+    const toObject = JSON.parse(localStorage.getItem(task.id));
+
+    let validateSearch = false;
+    let validateDoneState;
+
+    if (inputValue.indexOf(searchInput.value.toLowerCase()) !== -1) {
+      validateSearch = true;
+    }
+
+    switch (selectFilter.value) {
+      case "all":
+        validateDoneState = true;
+        break;
+      case "done":
+        validateDoneState = toObject["done"] === true;
+        break;
+      case "pendent":
+        validateDoneState = toObject["done"] === false;
+        break;
+    }
+
+    if (validateSearch && validateDoneState) {
+      task.classList.remove("is-hide");
+    }
+  });
+}
 
 function removeExtraSpaces(string) {
   const formattedString = string.trim().replace(/( )+/g, " ");
@@ -57,6 +114,7 @@ function addNewTask() {
   localStorage.setItem(template.id, JSON.stringify(taskData));
 
   taskContainer.appendChild(template);
+  taskInputForm.value = "";
 }
 
 function createTaskTemplate(id, done) {
@@ -143,13 +201,9 @@ function generateRandomId() {
   return id;
 }
 
-window.onload = () => {
-  if (!localStorage.getItem("taskIdList")) {
-    localStorage.setItem("taskIdList", []);
-    return;
-  }
-
+function loadTask() {
   const taskIdList = localStorage.getItem("taskIdList").split(" ");
+
   taskIdList.forEach((id) => {
     const item = JSON.parse(localStorage.getItem(id));
     if (item) {
@@ -158,4 +212,13 @@ window.onload = () => {
       taskContainer.appendChild(template);
     }
   });
+}
+
+window.onload = () => {
+  if (!localStorage.getItem("taskIdList")) {
+    localStorage.setItem("taskIdList", []);
+    return;
+  }
+
+  loadTask();
 };

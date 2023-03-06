@@ -34,6 +34,12 @@ input {
   gap: 20px;
 }
 
+.l-filters {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+}
+
 .c-title {
   font-size: 2.5rem;
   font-weight: 500;
@@ -50,7 +56,6 @@ input {
 .c-input {
   padding: 0.5rem;
   font-size: 1.2rem;
-  border-radius: 5px;
   border: none;
   flex: 1;
   text-align: center;
@@ -92,6 +97,9 @@ input {
 .c-icon--add:hover {
   color: rgb(173, 30, 54);
 }
+.c-icon--search:hover {
+  color: orange;
+}
 .c-icon--done:hover {
   color: limegreen;
 }
@@ -100,6 +108,22 @@ input {
 }
 .c-icon--del:hover {
   color: red;
+}
+
+.c-search-form {
+  border: 1px solid #333;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.c-select-filter {
+  font-size: 0.9rem;
+  padding: 0.3rem;
+}
+
+.is-hide {
+  display: none;
 }
 
 /*# sourceMappingURL=main.css.map */
